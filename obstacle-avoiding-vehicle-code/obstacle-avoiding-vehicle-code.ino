@@ -8,12 +8,14 @@ void setup() {
   pinMode(trig_pin,OUTPUT);
   pinMode(echo_pin,INPUT);
   
-  pinMode(lft_forwrd_pin,OUTPUT);
-  pinMode(lft_rev_pin,OUTPUT);
-  pinMode(rght_forwrd_pin,OUTPUT);
-  pinMode(right_reverse_pin,OUTPUT);
+  pinMode(rf_pin,OUTPUT);
+  pinMode(rr_pin,OUTPUT);
+  pinMode(lf_pin,OUTPUT);
+  pinMode(lr_pin,OUTPUT);
   Serial.begin(9600);
 }
+
+#include "vehicleCommands.h"
 
 void loop() {
   // put your main code here, to run repeatedly:
@@ -31,20 +33,4 @@ void loop() {
   else{
     goForward();
   }
-}
-void goForward(){
-  botSpeed = 75;
-  Serial.println("Forward...at "+String(botSpeed));
-  analogWrite(lft_forwrd_pin,botSpeed);
-  analogWrite(lft_rev_pin,0);
-  analogWrite(rght_forwrd_pin,botSpeed);
-  analogWrite(right_reverse_pin,0);
-}
-void goRight(){
-  botSpeed = 200;
-  Serial.println("Right...at "+String(botSpeed));
-  analogWrite(lft_forwrd_pin,0);
-  analogWrite(lft_rev_pin,botSpeed);
-  analogWrite(rght_forwrd_pin,botSpeed);
-  analogWrite(rght_rev_pin,0);
 }
